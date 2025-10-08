@@ -53,8 +53,13 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const posts = await getPosts();
+
+  const limitedPosts = posts.slice(0, 5);
+
   return {
-    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: true
+    paths: limitedPosts.map(({ node: { slug } }) => ({
+      params: { slug }
+    })),
+    fallback: 'blocking'
   };
 }

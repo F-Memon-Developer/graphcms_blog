@@ -192,8 +192,8 @@ export const getCategoryPost = async slug => {
 
 export const getFeaturedPosts = async () => {
   const query = gql`
-    query GetCategoryPost() {
-      posts(where: {featuredPost: true}) {
+    query GetCategoryPost {
+      posts(where: { featuredPost: true }) {
         author {
           name
           photo {
